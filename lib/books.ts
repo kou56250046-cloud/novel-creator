@@ -14,6 +14,8 @@ export const LEVELS = [
   { id: "social-comedy", label: "社会あるあるコメディ", emoji: "💼", color: "#66BB6A", bg: "#F0FFF4" },
   { id: "drama",         label: "ドラマ",             emoji: "🎭", color: "#EF5350", bg: "#FFF5F5" },
   { id: "life-drama",    label: "人生ドラマ",         emoji: "🌸", color: "#FF8A65", bg: "#FFF8F5" },
+  { id: "isekai",        label: "異世界転生系",       emoji: "✨", color: "#00E5FF", bg: "#E0FFFE" },
+  { id: "black-company", label: "ブラック企業系",     emoji: "💀", color: "#FF6B35", bg: "#FFF3EE" },
 ] as const;
 
 export type LevelId = (typeof LEVELS)[number]["id"];

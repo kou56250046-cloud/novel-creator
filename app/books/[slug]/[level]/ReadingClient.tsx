@@ -12,6 +12,8 @@ const ALL_LEVELS = [
   { id: "social-comedy", label: "社会あるあるコメディ", emoji: "💼", color: "#66BB6A" },
   { id: "drama",         label: "ドラマ",             emoji: "🎭", color: "#EF5350" },
   { id: "life-drama",    label: "人生ドラマ",         emoji: "🌸", color: "#FF8A65" },
+  { id: "isekai",        label: "異世界転生系",       emoji: "✨", color: "#00E5FF" },
+  { id: "black-company", label: "ブラック企業系",     emoji: "💀", color: "#FF6B35" },
 ];
 
 interface Props {

@@ -12,6 +12,8 @@ const LEVELS = [
   { id: "social-comedy", label: "社会あるあるコメディ", emoji: "💼", desc: "あるある！と笑える社会人目線で",   color: "#66BB6A", bg: "#0f2010" },
   { id: "drama",         label: "ドラマ",             emoji: "🎭", desc: "感情を揺さぶる人間ドラマとして",   color: "#EF5350", bg: "#2d0f0f" },
   { id: "life-drama",    label: "人生ドラマ",         emoji: "🌸", desc: "人生の深みと重みで読む",           color: "#FF8A65", bg: "#2d1808" },
+  { id: "isekai",        label: "異世界転生系",       emoji: "✨", desc: "チート能力で無双する俺つえー展開", color: "#00E5FF", bg: "#001a22" },
+  { id: "black-company", label: "ブラック企業系",     emoji: "💀", desc: "ブラック企業で最強メンタル爆笑録", color: "#FF6B35", bg: "#1a0d00" },
 ];
 
 const BOOK_META: Record<string, { title: string; subtitle: string }> = {

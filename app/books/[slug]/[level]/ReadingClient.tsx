@@ -5,11 +5,12 @@ import { motion } from "framer-motion";
 import { BookMeta } from "@/lib/books";
 
 const ALL_LEVELS = [
-  { id: "kindergarten", label: "幼稚園", emoji: "🌱", color: "#FFB7C5" },
-  { id: "elementary",   label: "小学生", emoji: "🚀", color: "#FFD700" },
-  { id: "middle",       label: "中学生", emoji: "⚡", color: "#4FC3F7" },
-  { id: "high",         label: "高校生", emoji: "🔥", color: "#FF7043" },
-  { id: "university",   label: "大学生", emoji: "🎓", color: "#7C4DFF" },
+  { id: "kindergarten", label: "幼稚園",     emoji: "🌱", color: "#FFB7C5" },
+  { id: "elementary",   label: "小学生",     emoji: "🚀", color: "#FFD700" },
+  { id: "middle",       label: "中学生",     emoji: "⚡", color: "#4FC3F7" },
+  { id: "high",         label: "高校生",     emoji: "🔥", color: "#FF7043" },
+  { id: "university",   label: "大学生",     emoji: "🎓", color: "#7C4DFF" },
+  { id: "folktale",     label: "日本昔話風", emoji: "🏮", color: "#C8A04A" },
 ];
 
 interface Props {

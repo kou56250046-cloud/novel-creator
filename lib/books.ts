@@ -7,11 +7,12 @@ import html from "remark-html";
 const booksDir = path.join(process.cwd(), "content/books");
 
 export const LEVELS = [
-  { id: "kindergarten", label: "幼稚園", emoji: "🌱", color: "#FFB7C5", bg: "#FFF0F3" },
-  { id: "elementary",   label: "小学生", emoji: "🚀", color: "#FFD700", bg: "#FFFBEB" },
-  { id: "middle",       label: "中学生", emoji: "⚡", color: "#4FC3F7", bg: "#E3F4FD" },
-  { id: "high",         label: "高校生", emoji: "🔥", color: "#FF7043", bg: "#FFF3EF" },
-  { id: "university",   label: "大学生", emoji: "🎓", color: "#7C4DFF", bg: "#F3EEFF" },
+  { id: "kindergarten", label: "幼稚園",      emoji: "🌱", color: "#FFB7C5", bg: "#FFF0F3" },
+  { id: "elementary",   label: "小学生",      emoji: "🚀", color: "#FFD700", bg: "#FFFBEB" },
+  { id: "middle",       label: "中学生",      emoji: "⚡", color: "#4FC3F7", bg: "#E3F4FD" },
+  { id: "high",         label: "高校生",      emoji: "🔥", color: "#FF7043", bg: "#FFF3EF" },
+  { id: "university",   label: "大学生",      emoji: "🎓", color: "#7C4DFF", bg: "#F3EEFF" },
+  { id: "folktale",     label: "日本昔話風",  emoji: "🏮", color: "#C8A04A", bg: "#FAF3E0" },
 ] as const;
 
 export type LevelId = (typeof LEVELS)[number]["id"];

@@ -5,11 +5,12 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 const LEVELS = [
-  { id: "kindergarten", label: "幼稚園", emoji: "🌱", desc: "やさしいことばで、絵本みたいに", color: "#FFB7C5", bg: "#2d1a1e" },
-  { id: "elementary",   label: "小学生", emoji: "🚀", desc: "ぼうけんストーリーとして読む",   color: "#FFD700", bg: "#2d2a10" },
-  { id: "middle",       label: "中学生", emoji: "⚡", desc: "歴史ドラマとして読む",           color: "#4FC3F7", bg: "#0d1e2d" },
-  { id: "high",         label: "高校生", emoji: "🔥", desc: "哲学と社会問題の視点で読む",     color: "#FF7043", bg: "#2d1508" },
-  { id: "university",   label: "大学生", emoji: "🎓", desc: "批評・論考スタイルで読む",       color: "#7C4DFF", bg: "#1a1028" },
+  { id: "kindergarten", label: "幼稚園",     emoji: "🌱", desc: "やさしいことばで、絵本みたいに",   color: "#FFB7C5", bg: "#2d1a1e" },
+  { id: "elementary",   label: "小学生",     emoji: "🚀", desc: "ぼうけんストーリーとして読む",     color: "#FFD700", bg: "#2d2a10" },
+  { id: "middle",       label: "中学生",     emoji: "⚡", desc: "歴史ドラマとして読む",             color: "#4FC3F7", bg: "#0d1e2d" },
+  { id: "high",         label: "高校生",     emoji: "🔥", desc: "哲学と社会問題の視点で読む",       color: "#FF7043", bg: "#2d1508" },
+  { id: "university",   label: "大学生",     emoji: "🎓", desc: "批評・論考スタイルで読む",         color: "#7C4DFF", bg: "#1a1028" },
+  { id: "folktale",     label: "日本昔話風", emoji: "🏮", desc: "むかしむかし…語り口で読む",        color: "#C8A04A", bg: "#2a2010" },
 ];
 
 const BOOK_META: Record<string, { title: string; subtitle: string }> = {

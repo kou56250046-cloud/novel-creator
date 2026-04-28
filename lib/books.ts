@@ -7,12 +7,13 @@ import html from "remark-html";
 const booksDir = path.join(process.cwd(), "content/books");
 
 export const LEVELS = [
-  { id: "kindergarten", label: "幼稚園",      emoji: "🌱", color: "#FFB7C5", bg: "#FFF0F3" },
-  { id: "elementary",   label: "小学生",      emoji: "🚀", color: "#FFD700", bg: "#FFFBEB" },
-  { id: "middle",       label: "中学生",      emoji: "⚡", color: "#4FC3F7", bg: "#E3F4FD" },
-  { id: "high",         label: "高校生",      emoji: "🔥", color: "#FF7043", bg: "#FFF3EF" },
-  { id: "university",   label: "大学生",      emoji: "🎓", color: "#7C4DFF", bg: "#F3EEFF" },
-  { id: "folktale",     label: "日本昔話風",  emoji: "🏮", color: "#C8A04A", bg: "#FAF3E0" },
+  { id: "folktale",      label: "昔話風",             emoji: "🏮", color: "#C8A04A", bg: "#FAF3E0" },
+  { id: "comedy-kids",   label: "コメディ",           emoji: "😄", color: "#FF6B9D", bg: "#FFF0F8" },
+  { id: "mystery",       label: "ミステリー",         emoji: "🔍", color: "#78909C", bg: "#F0F4F8" },
+  { id: "lightnovel",    label: "ラノベ系",           emoji: "⚔️", color: "#AB47BC", bg: "#F9F0FF" },
+  { id: "social-comedy", label: "社会あるあるコメディ", emoji: "💼", color: "#66BB6A", bg: "#F0FFF4" },
+  { id: "drama",         label: "ドラマ",             emoji: "🎭", color: "#EF5350", bg: "#FFF5F5" },
+  { id: "life-drama",    label: "人生ドラマ",         emoji: "🌸", color: "#FF8A65", bg: "#FFF8F5" },
 ] as const;
 
 export type LevelId = (typeof LEVELS)[number]["id"];

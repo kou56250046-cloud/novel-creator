@@ -5,12 +5,13 @@ import { motion } from "framer-motion";
 import { BookMeta } from "@/lib/books";
 
 const ALL_LEVELS = [
-  { id: "kindergarten", label: "幼稚園",     emoji: "🌱", color: "#FFB7C5" },
-  { id: "elementary",   label: "小学生",     emoji: "🚀", color: "#FFD700" },
-  { id: "middle",       label: "中学生",     emoji: "⚡", color: "#4FC3F7" },
-  { id: "high",         label: "高校生",     emoji: "🔥", color: "#FF7043" },
-  { id: "university",   label: "大学生",     emoji: "🎓", color: "#7C4DFF" },
-  { id: "folktale",     label: "日本昔話風", emoji: "🏮", color: "#C8A04A" },
+  { id: "folktale",      label: "昔話風",             emoji: "🏮", color: "#C8A04A" },
+  { id: "comedy-kids",   label: "コメディ",           emoji: "😄", color: "#FF6B9D" },
+  { id: "mystery",       label: "ミステリー",         emoji: "🔍", color: "#78909C" },
+  { id: "lightnovel",    label: "ラノベ系",           emoji: "⚔️", color: "#AB47BC" },
+  { id: "social-comedy", label: "社会あるあるコメディ", emoji: "💼", color: "#66BB6A" },
+  { id: "drama",         label: "ドラマ",             emoji: "🎭", color: "#EF5350" },
+  { id: "life-drama",    label: "人生ドラマ",         emoji: "🌸", color: "#FF8A65" },
 ];
 
 interface Props {

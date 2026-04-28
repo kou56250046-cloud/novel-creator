@@ -5,12 +5,13 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 const LEVELS = [
-  { id: "kindergarten", label: "幼稚園",     emoji: "🌱", desc: "やさしいことばで、絵本みたいに",   color: "#FFB7C5", bg: "#2d1a1e" },
-  { id: "elementary",   label: "小学生",     emoji: "🚀", desc: "ぼうけんストーリーとして読む",     color: "#FFD700", bg: "#2d2a10" },
-  { id: "middle",       label: "中学生",     emoji: "⚡", desc: "歴史ドラマとして読む",             color: "#4FC3F7", bg: "#0d1e2d" },
-  { id: "high",         label: "高校生",     emoji: "🔥", desc: "哲学と社会問題の視点で読む",       color: "#FF7043", bg: "#2d1508" },
-  { id: "university",   label: "大学生",     emoji: "🎓", desc: "批評・論考スタイルで読む",         color: "#7C4DFF", bg: "#1a1028" },
-  { id: "folktale",     label: "日本昔話風", emoji: "🏮", desc: "むかしむかし…語り口で読む",        color: "#C8A04A", bg: "#2a2010" },
+  { id: "folktale",      label: "昔話風",             emoji: "🏮", desc: "むかしむかし…やさしい語り口で",     color: "#C8A04A", bg: "#2a2010" },
+  { id: "comedy-kids",   label: "コメディ",           emoji: "😄", desc: "笑いながら楽しく読む",             color: "#FF6B9D", bg: "#2d1020" },
+  { id: "mystery",       label: "ミステリー",         emoji: "🔍", desc: "謎解きとスリルで読む",             color: "#78909C", bg: "#161c22" },
+  { id: "lightnovel",    label: "ラノベ系",           emoji: "⚔️", desc: "熱い展開とキャラクターで読む",     color: "#AB47BC", bg: "#1f1028" },
+  { id: "social-comedy", label: "社会あるあるコメディ", emoji: "💼", desc: "あるある！と笑える社会人目線で",   color: "#66BB6A", bg: "#0f2010" },
+  { id: "drama",         label: "ドラマ",             emoji: "🎭", desc: "感情を揺さぶる人間ドラマとして",   color: "#EF5350", bg: "#2d0f0f" },
+  { id: "life-drama",    label: "人生ドラマ",         emoji: "🌸", desc: "人生の深みと重みで読む",           color: "#FF8A65", bg: "#2d1808" },
 ];
 
 const BOOK_META: Record<string, { title: string; subtitle: string }> = {

@@ -104,11 +104,13 @@ for page in doc:
 ```
 content/books/<slug>/
   _meta.json        ← タイトル・説明・タグ・カバー色
-  kindergarten.md   ← 幼稚園向け（400〜800字）
-  elementary.md     ← 小学生向け（1200〜2000字）
-  middle.md         ← 中学生向け（2000〜3000字）
-  high.md           ← 高校生向け（3000〜4000字）
-  university.md     ← 大学生向け（4000字以上）
+  folktale.md       ← 昔話風（幼児向け・1500〜2500字）
+  comedy-kids.md    ← コメディ（子供向け・1200〜2000字）
+  mystery.md        ← ミステリー（若年層向け・2000〜3000字）
+  lightnovel.md     ← ラノベ系（若年層向け・2500〜4000字）
+  social-comedy.md  ← 社会あるあるコメディ（社会人向け・2000〜3000字）
+  drama.md          ← ドラマ（若手社会人向け・2500〜4000字）
+  life-drama.md     ← 人生ドラマ（中年層向け・3000〜5000字）
 ```
 
 ## コーディング規約

@@ -72,6 +72,45 @@ GEMINI_API_KEY=
 VERCEL_TOKEN=
 ```
 
+## コンテンツ生成スキル
+
+### `/generate-age-content` スキルの使い方
+
+新しい本のコンテンツを生成するときは、必ず以下の手順を踏む：
+
+1. **スキルを呼び出す：** `/generate-age-content <slug> <本のタイトル>`
+2. **作成方針を確認する：** スキルが5世代分の作成方針を表示する
+3. **ユーザーに確認：** 「この方針で進めますか？」と確認を取る
+4. **承認後に生成：** `.claude/commands/generate-age-content.md` の方針に従って5つのMDファイルを生成する
+
+作成方針の詳細は `.claude/commands/generate-age-content.md` を参照。
+
+### PDFからのテキスト抽出
+
+```python
+# PyMuPDFを使った抽出（文字化け対策でHTML経由）
+import fitz, re
+from html import unescape
+
+doc = fitz.open(path)
+for page in doc:
+    html = page.get_text('html')
+    text = re.sub(r'<[^>]+>', ' ', html)
+    text = unescape(text)
+```
+
+### コンテンツのファイル構造
+
+```
+content/books/<slug>/
+  _meta.json        ← タイトル・説明・タグ・カバー色
+  kindergarten.md   ← 幼稚園向け（400〜800字）
+  elementary.md     ← 小学生向け（1200〜2000字）
+  middle.md         ← 中学生向け（2000〜3000字）
+  high.md           ← 高校生向け（3000〜4000字）
+  university.md     ← 大学生向け（4000字以上）
+```
+
 ## コーディング規約
 
 - TypeScript strict モード

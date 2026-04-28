@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip list *)",
+      "Bash(python *)",
+      "Bash(gh auth *)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --no-src-dir --turbopack --import-alias \"@/*\" --yes)",
+      "Bash(mv *)",
+      "Bash(rm *)"
+    ]
+  }
+}

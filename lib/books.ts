@@ -14,11 +14,17 @@ export const LEVELS = [
   { id: "social-comedy", label: "社会あるあるコメディ", emoji: "💼", color: "#66BB6A", bg: "#F0FFF4" },
   { id: "drama",         label: "ドラマ",             emoji: "🎭", color: "#EF5350", bg: "#FFF5F5" },
   { id: "life-drama",    label: "人生ドラマ",         emoji: "🌸", color: "#FF8A65", bg: "#FFF8F5" },
-  { id: "isekai",        label: "異世界転生系",       emoji: "✨", color: "#00E5FF", bg: "#E0FFFE" },
+  { id: "urban-legend",  label: "都市伝説系",         emoji: "👁️", color: "#7C4DFF", bg: "#120a1a" },
   { id: "black-company", label: "ブラック企業系",     emoji: "💀", color: "#FF6B35", bg: "#FFF3EE" },
 ] as const;
 
 export type LevelId = (typeof LEVELS)[number]["id"];
+
+export interface ChapterMeta {
+  id: string;
+  title: string;
+  description?: string;
+}
 
 export interface BookMeta {
   slug: string;
@@ -28,12 +34,62 @@ export interface BookMeta {
   tags: string[];
   coverColor: string;
   publishedAt: string;
+  chapters?: ChapterMeta[];
 }
 
 export interface BookContent {
   meta: BookMeta;
   contentHtml: string;
   levelLabel: string;
+  chapterId?: string;
+  chapterTitle?: string;
+  prevChapterId?: string | null;
+  nextChapterId?: string | null;
+}
+
+export function isSeries(meta: BookMeta): boolean {
+  return Array.isArray(meta.chapters) && meta.chapters.length > 0;
+}
+
+export function getChapters(slug: string): ChapterMeta[] {
+  return getBookMeta(slug).chapters ?? [];
+}
+
+export function getAdjacentChapters(
+  meta: BookMeta,
+  currentChapterId: string
+): { prev: ChapterMeta | null; next: ChapterMeta | null } {
+  const chapters = meta.chapters ?? [];
+  const idx = chapters.findIndex((c) => c.id === currentChapterId);
+  return {
+    prev: idx > 0 ? chapters[idx - 1] : null,
+    next: idx < chapters.length - 1 ? chapters[idx + 1] : null,
+  };
+}
+
+export async function getChapterContent(
+  slug: string,
+  chapterId: string,
+  level: LevelId
+): Promise<BookContent> {
+  const filePath = path.join(booksDir, slug, chapterId, `${level}.md`);
+  const fileContents = fs.readFileSync(filePath, "utf-8");
+  const { content } = matter(fileContents);
+  const processed = await remark().use(html).process(content);
+  const contentHtml = processed.toString();
+  const meta = getBookMeta(slug);
+  const levelInfo = LEVELS.find((l) => l.id === level)!;
+  const chapterMeta = (meta.chapters ?? []).find((c) => c.id === chapterId);
+  const { prev, next } = getAdjacentChapters(meta, chapterId);
+  return {
+    meta,
+    contentHtml,
+    levelLabel: levelInfo.label,
+    chapterId,
+    chapterTitle: chapterMeta?.title,
+    prevChapterId: prev?.id ?? null,
+    nextChapterId: next?.id ?? null,
+  };
 }
 
 export function getAllBooks(): BookMeta[] {

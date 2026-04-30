@@ -12,7 +12,7 @@ const ALL_LEVELS = [
   { id: "social-comedy", label: "社会あるあるコメディ", emoji: "💼", color: "#66BB6A" },
   { id: "drama",         label: "ドラマ",             emoji: "🎭", color: "#EF5350" },
   { id: "life-drama",    label: "人生ドラマ",         emoji: "🌸", color: "#FF8A65" },
-  { id: "isekai",        label: "異世界転生系",       emoji: "✨", color: "#00E5FF" },
+  { id: "urban-legend",  label: "都市伝説系",         emoji: "👁️", color: "#7C4DFF" },
   { id: "black-company", label: "ブラック企業系",     emoji: "💀", color: "#FF6B35" },
 ];
 
@@ -23,17 +23,25 @@ interface Props {
   levelColor: string;
   levelEmoji: string;
   slug: string;
+  chapterId: string;
+  chapterTitle: string;
   level: string;
+  prevChapterId: string | null;
+  nextChapterId: string | null;
 }
 
-export default function ReadingClient({
+export default function SerialReadingClient({
   meta,
   contentHtml,
   levelLabel,
   levelColor,
   levelEmoji,
   slug,
+  chapterId,
+  chapterTitle,
   level,
+  prevChapterId,
+  nextChapterId,
 }: Props) {
   return (
     <div
@@ -46,16 +54,16 @@ export default function ReadingClient({
         style={{ background: "rgba(13,13,26,0.9)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}
       >
         <Link
-          href={`/books/${slug}`}
+          href={`/books/${slug}/${chapterId}`}
           className="text-gray-500 hover:text-yellow-400 transition-colors text-sm flex items-center gap-2"
         >
-          ← 世代を変える
+          ← ジャンルを変える
         </Link>
 
-        {/* 世代切り替えタブ */}
+        {/* ジャンル切り替えタブ */}
         <div className="hidden md:flex gap-1">
           {ALL_LEVELS.map((l) => (
-            <Link key={l.id} href={`/books/${slug}/${l.id}`}>
+            <Link key={l.id} href={`/books/${slug}/${chapterId}/${l.id}`}>
               <div
                 className="px-3 py-1.5 rounded-full text-xs transition-all"
                 style={
@@ -84,13 +92,14 @@ export default function ReadingClient({
         >
           <div className="text-5xl mb-4">{levelEmoji}</div>
           <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: levelColor }}>
-            {levelLabel}向け
+            {levelLabel}
           </p>
+          <p className="text-gray-500 text-sm mb-2">{meta.title}</p>
           <h1
             className="text-2xl md:text-3xl font-thin"
             style={{ color: "#e8e8f0", fontFamily: "Noto Serif JP, serif" }}
           >
-            {meta.title}
+            {chapterTitle}
           </h1>
           <div className="mt-6 w-24 h-px mx-auto" style={{ background: `${levelColor}50` }} />
         </motion.div>
@@ -107,31 +116,78 @@ export default function ReadingClient({
 
         {/* フッター */}
         <motion.div
-          className="mt-20 pt-10 border-t border-white/5 text-center"
+          className="mt-20 pt-10 border-t border-white/5"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
         >
-          <p className="text-gray-600 text-sm mb-6">他の世代でも読んでみる</p>
-          <div className="flex justify-center flex-wrap gap-3">
-            {ALL_LEVELS.filter((l) => l.id !== level).map((l) => (
-              <Link key={l.id} href={`/books/${slug}/${l.id}`}>
+          {/* 章ナビゲーション */}
+          <div className="flex items-center justify-between mb-10">
+            {prevChapterId ? (
+              <Link href={`/books/${slug}/${prevChapterId}/${level}`}>
                 <motion.div
                   className="px-4 py-2 rounded-full text-sm cursor-pointer"
-                  style={{ background: `${l.color}15`, color: l.color, border: `1px solid ${l.color}30` }}
-                  whileHover={{ scale: 1.05 }}
+                  style={{ background: "rgba(255,255,255,0.05)", color: "#888", border: "1px solid rgba(255,255,255,0.1)" }}
+                  whileHover={{ scale: 1.05, color: "#c9a96e" }}
                   whileTap={{ scale: 0.97 }}
                 >
-                  {l.emoji} {l.label}
+                  ← 前の章
                 </motion.div>
               </Link>
-            ))}
+            ) : (
+              <div />
+            )}
+
+            <Link href={`/books/${slug}`}>
+              <motion.div
+                className="px-4 py-2 rounded-full text-sm cursor-pointer"
+                style={{ background: "rgba(255,255,255,0.03)", color: "#666", border: "1px solid rgba(255,255,255,0.07)" }}
+                whileHover={{ scale: 1.05, color: "#c9a96e" }}
+                whileTap={{ scale: 0.97 }}
+              >
+                目次に戻る
+              </motion.div>
+            </Link>
+
+            {nextChapterId ? (
+              <Link href={`/books/${slug}/${nextChapterId}/${level}`}>
+                <motion.div
+                  className="px-4 py-2 rounded-full text-sm cursor-pointer"
+                  style={{ background: "rgba(255,255,255,0.05)", color: "#888", border: "1px solid rgba(255,255,255,0.1)" }}
+                  whileHover={{ scale: 1.05, color: "#c9a96e" }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  次の章 →
+                </motion.div>
+              </Link>
+            ) : (
+              <div />
+            )}
           </div>
 
-          <div className="mt-10">
-            <Link href="/" className="text-gray-600 hover:text-yellow-400 transition-colors text-sm">
-              ← 本棚に戻る
-            </Link>
+          {/* 他のジャンルで読む */}
+          <div className="text-center">
+            <p className="text-gray-600 text-sm mb-4">他のジャンルで読む</p>
+            <div className="flex justify-center flex-wrap gap-3">
+              {ALL_LEVELS.filter((l) => l.id !== level).map((l) => (
+                <Link key={l.id} href={`/books/${slug}/${chapterId}/${l.id}`}>
+                  <motion.div
+                    className="px-4 py-2 rounded-full text-sm cursor-pointer"
+                    style={{ background: `${l.color}15`, color: l.color, border: `1px solid ${l.color}30` }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    {l.emoji} {l.label}
+                  </motion.div>
+                </Link>
+              ))}
+            </div>
+
+            <div className="mt-10">
+              <Link href="/" className="text-gray-600 hover:text-yellow-400 transition-colors text-sm">
+                ← 本棚に戻る
+              </Link>
+            </div>
           </div>
         </motion.div>
       </div>

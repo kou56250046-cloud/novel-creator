@@ -1,0 +1,21 @@
+{
+  "slug": "test-series",
+  "title": "世界史シリーズ",
+  "subtitle": "History of the World — Series",
+  "description": "古代から近代まで、世界史の転換点を多角的な視点で読む。",
+  "tags": ["世界史", "シリーズ", "テスト"],
+  "coverColor": "#8B6914",
+  "publishedAt": "2026-04-29",
+  "chapters": [
+    {
+      "id": "chapter-1",
+      "title": "第一章　古代文明の黎明",
+      "description": "メソポタミア・エジプト・インダスに芽生えた文明の始まり"
+    },
+    {
+      "id": "chapter-2",
+      "title": "第二章　帝国の興亡",
+      "description": "ローマ・漢・パルティアが競い合った覇権の時代"
+    }
+  ]
+}
